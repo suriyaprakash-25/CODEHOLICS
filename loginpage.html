@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Login Page</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://wallpaperaccess.com/full/7389990.jpg') no-repeat center center fixed; /* Replace this URL with your desired image */
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Overlay for darkening the background */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark overlay with transparency */
+            z-index: -1; /* Places the overlay behind content */
+        }
+
+        /* Title */
+        .title {
+            font-size: 50px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+            animation: text-fade-in 3s ease-out forwards;
+            margin-bottom: 20px;
+            z-index: 1; /* Ensures title appears above the login box */
+        }
+
+        /* Catchy Phrase */
+        .catchy-phrase {
+            font-size: 20px;
+            color: white;
+            font-style: italic;
+            animation: fade-in 2s ease-out forwards;
+            margin-bottom: 40px;
+            opacity: 0;
+            z-index: 1; /* Ensures phrase appears above the login box */
+        }
+
+        /* Animation for Title */
+        @keyframes text-fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation for Catchy Phrase */
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Login Container */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Login box will be below catchy phrase */
+        }
+
+        /* Login Box */
+        .login-box {
+            width: 350px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2), inset 0px -4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transform: perspective(600px) rotateX(10deg);
+            transition: transform 0.3s ease-out; /* Smooth movement for rotation */
+            position: relative;
+            top: -50px; /* Moves the box slightly up */
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #2575fc;
+            box-shadow: 0px 0px 5px rgba(37, 117, 252, 0.5);
+        }
+
+        /* Error Messages */
+        .error-message {
+            color: red;
+            font-size: 12px;
+            display: none;
+            margin-top: 5px;
+        }
+
+        /* Button */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 400px) {
+            .login-box {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+
+        /* Navigation Link */
+        .nav-link {
+            font-size: 16px;
+            color: #2575fc;
+            text-decoration: none;
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Title and Catchy Phrase -->
+    <div class="title">Anatomy Hub</div>
+    <div class="catchy-phrase">Unlock the Secrets of the Human Body</div>
+
+    <div class="login-container">
+        <div class="login-box" id="loginBox">
+            <h1>LOGIN</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                    <small class="error-message"></small>
+                </div>
+                <div class="form-group">
+                    <label for="age"><b>Age</b></label>
+                    <input type="number" id="age" placeholder="Enter your age">
+                    <small class="error-message"></small>
+                </div>
+                <div class="form-group">
+                    <label for="username"><b>Username</b></label>
+                    <input type="text" id="username" placeholder="Enter your username">
+                    <small class="error-message"></small>
+                </div>
+                <div class="form-group">
+                    <label for="password"><b>Password</b></label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                    <small class="error-message"></small>
+                </div>
+                <button type="submit" class="btn">Login</button>
+            </form>
+
+            <!-- This link will show after successful login -->
+            <a href="proj2.html" class="nav-link" id="navLink" style="display: none;">Go to Dashboard</a>
+        </div>
+    </div>
+
+    <script>
+        // Mouse movement effect for the login box
+        const loginBox = document.getElementById("loginBox");
+
+        document.addEventListener("mousemove", (event) => {
+            let x = (event.clientX / window.innerWidth) * 20 - 10;
+            let y = (event.clientY / window.innerHeight) * 20 - 10;
+            loginBox.style.transform = `perspective(600px) rotateX(${y}deg) rotateY(${x}deg)`;
+        });
+
+        // Validation logic
+        const loginForm = document.getElementById("loginForm");
+        const emailInput = document.getElementById("email");
+        const ageInput = document.getElementById("age");
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
+        const navLink = document.getElementById("navLink");
+
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            // Clear previous error messages
+            const errorMessages = document.querySelectorAll(".error-message");
+            errorMessages.forEach((error) => (error.style.display = "none"));
+
+            let isValid = true;
+
+            // Validate Email
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(emailInput.value)) {
+                showError(emailInput, "Please enter a valid email address.");
+                isValid = false;
+            }
+
+            // Validate Age
+            if (ageInput.value < 18) {
+                showError(ageInput, "You must be at least 18 years old.");
+                isValid = false;
+            }
+
+            // Validate Username (fixed regex for special character)
+            const usernameRegex = /^(?=.*[A-Z])(?=.*[_$!]).+$/;
+            if (!usernameRegex.test(usernameInput.value)) {
+                showError(
+                    usernameInput,
+                    "Username must contain at least one uppercase letter and one special character (_, $, or !)."
+                );
+                isValid = false;
+            }
+
+            // Validate Password
+            if (passwordInput.value !== "science") {
+                showError(passwordInput, "Password must be 'science'.");
+                isValid = false;
+            }
+
+            // If all validations pass
+            if (isValid) {
+                alert("Login successful!");
+                // Show the navigation link after successful login
+                navLink.style.display = "block";
+                loginForm.reset();
+            }
+        });
+
+        function showError(input, message) {
+            const formGroup = input.parentElement;
+            const errorMessage = formGroup.querySelector(".error-message");
+            errorMessage.textContent = message;
+            errorMessage.style.display = "block";
+        }
+    </script>
+</body>
+</html>
