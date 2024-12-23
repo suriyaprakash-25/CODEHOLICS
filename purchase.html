@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomy Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Sidebar (Left) */
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 4px 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            margin-bottom: 30px;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            margin-top: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            outline: none;
+            background-color: #fff;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #2575fc;
+            box-shadow: 0 0 5px rgba(37, 117, 252, 0.4);
+        }
+
+        /* Filter Section */
+        .filter-section {
+            margin-bottom: 25px;
+        }
+
+        .filter-section h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .filter-section label {
+            font-size: 14px;
+            margin-left: 5px;
+            color: #ddd;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .filter-section input[type="checkbox"] {
+            margin-right: 12px;
+            accent-color: #2575fc;
+        }
+
+        .filter-section input[type="checkbox"]:checked + label {
+            color: #2575fc;
+        }
+
+        /* Category List */
+        .category-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .category-list li {
+            margin: 12px 0;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .category-list li:hover {
+            background-color: #2575fc;
+            color: white;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 260px;
+            padding: 20px;
+            width: calc(100% - 260px);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-evenly;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 22%;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card img {
+            width: 200px;
+            height: 200px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .product-card h3 {
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .product-card .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2575fc;
+            margin-bottom: 15px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .product-card {
+                width: 48%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .product-card {
+                width: 100%;
+            }
+
+            .sidebar {
+                width: 200px;
+            }
+
+            .main-content {
+                margin-left: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Categories</h2>
+
+    
+        <div class="filter-section">
+            <h3>Filter by Category</h3>
+            <ul class="category-list">
+                <li onclick="showCategory('humanOrganModels')">Human Organ Models</li>
+                <li onclick="showCategory('books')">Books</li>
+                <li onclick="showCategory('charts')">Charts</li>
+                <li onclick="showCategory('all')">Show All</li> <!-- Show All Option -->
+            </ul>
+        </div>
+
+        <!-- Filter by Name -->
+        <div class="filter-section">
+            <h3>Filter by Name</h3>
+            <input type="checkbox" id="a-z" onclick="sortProducts('a-z')">
+            <label for="a-z">A-Z</label><br>
+            <input type="checkbox" id="z-a" onclick="sortProducts('z-a')">
+            <label for="z-a">Z-A</label>
+        </div>
+
+        <!-- Filter by Rate -->
+        <div class="filter-section">
+            <h3>Filter by Rate</h3>
+            <input type="checkbox" id="low-high" onclick="sortProducts('low-high')">
+            <label for="low-high">Low to High</label><br>
+            <input type="checkbox" id="high-low" onclick="sortProducts('high-low')">
+            <label for="high-low">High to Low</label>
+        </div>
+    </div>
+    
+    <div class="main-content" id="mainContent">
+        <!-- Human Organ Models -->
+        <div class="product-card humanOrganModels">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Heart Model</h3>
+            <p>Detailed heart model for educational purposes.</p>
+            <div class="price" data-price="49.99">$49.99</div>
+        </div>
+        <div class="product-card humanOrganModels">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Brain Model</h3>
+            <p>Interactive brain model for anatomy learning.</p>
+            <div class="price" data-price="59.99">$59.99</div>
+        </div>
+        <div class="product-card humanOrganModels">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Skeleton Model</h3>
+            <p>Full body skeleton model for medical students.</p>
+            <div class="price" data-price="129.99">$129.99</div>
+        </div>
+        <div class="product-card humanOrganModels">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Eye Model</h3>
+            <p>Detailed eye model for understanding anatomy.</p>
+            <div class="price" data-price="79.99">$79.99</div>
+        </div>
+        <div class="product-card humanOrganModels">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Skull Model</h3>
+            <p>Life-size skull model for educational purposes.</p>
+            <div class="price" data-price="89.99">$89.99</div>
+        </div>
+
+        <!-- Books -->
+        <div class="product-card books">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Anatomy by Scientists</h3>
+            <p>Explore anatomy through the eyes of leading scientists.</p>
+            <div class="price" data-price="99.99">$99.99</div>
+        </div>
+        <div class="product-card books">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Exploring Anatomy</h3>
+            <p>A comprehensive exploration of human anatomy.</p>
+            <div class="price">$79.99</div>
+        </div>
+        <div class="product-card books">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Human Anatomy Book</h3>
+            <p>Comprehensive anatomy textbook for students.</p>
+            <div class="price">$39.99</div>
+        </div>
+        <div class="product-card books">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Medical Terminology Book</h3>
+            <p>Essential medical terminology for healthcare professionals.</p>
+            <div class="price">$29.99</div>
+        </div>
+        <div class="product-card books">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Anatomy Flashcards</h3>
+            <p>Flashcards for learning human anatomy quickly.</p>
+            <div class="price">$19.99</div>
+        </div>
+        <div class="product-card books">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Anatomy Study Guide</h3>
+            <p>Study guide for mastering human anatomy concepts.</p>
+            <div class="price">$24.99</div>
+        </div>
+        <div class="product-card books">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Medical Review Book</h3>
+            <p>Review book for preparing medical exams.</p>
+            <div class="price">$34.99</div>
+        </div>
+        <div class="product-card books">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Human Anatomy for Artists</h3>
+            <p>Guide to understanding human anatomy for artistic purposes.</p>
+            <div class="price">$29.99</div>
+        </div>
+        <div class="product-card books">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>1500 cc Mystery</h3>
+            <p>Unveil the mystery behind the human brain's 1500 cc structure with this detailed chart.</p>
+            <div class="price">$22.99</div>
+        </div>
+        <div class="product-card charts">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Skull - A Detailed Description Chart</h3>
+            <p>Comprehensive chart illustrating the detailed structure of the human skull.</p>
+            <div class="price">$18.99</div>
+        </div>
+        <div class="product-card charts">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Analyzing Human Brain</h3>
+            <p>Chart providing an in-depth look at the human brain's anatomy and functions.</p>
+            <div class="price">$19.99</div>
+        </div>
+        <div class="product-card charts">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Detailed description of human eye</h3>
+            <p>diagrammatic representation of human eye , its parts and its functions.</p>
+            <div class="price">$22.99</div>
+        </div>
+
+        <div class="product-card charts">
+            <img src="https://via.placeholder.com/200" alt="Product Image">
+            <h3>Surgical equipments</h3>
+            <p>List of surgical equipments and their descriptive functions .</p>
+            <div class="price">$22.99</div>
+        </div>
+
+    </div>
+
+    <script>
+    // Updated function to handle showing all categories or specific ones
+    function showCategory(category) {
+    const allCategories = ['humanOrganModels', 'books', 'charts'];
+    
+    // If Show All is clicked, display all categories
+    if (category === 'all') {
+        allCategories.forEach(function(cat) {
+            const elements = document.querySelectorAll(`.${cat}`);
+            elements.forEach(function(element) {
+                element.style.display = 'block';  // Show all products
+            });
+        });
+    } else {
+        // Show only the selected category and hide others
+        allCategories.forEach(function(cat) {
+            const elements = document.querySelectorAll(`.${cat}`);
+            elements.forEach(function(element) {
+                if (cat === category) {
+                    element.style.display = 'block';  // Show selected category
+                } else {
+                    element.style.display = 'none';   // Hide other categories
+                }
+            });
+        });
+    }
+}
+
+
+    // Function to sort products by name or price
+    function sortProducts(criteria) {
+        const productCards = Array.from(document.querySelectorAll('.product-card'));
+        
+        // Sort by Name (A-Z, Z-A)
+        if (criteria === 'a-z') {
+            productCards.sort((a, b) => {
+                return a.querySelector('h3').innerText.localeCompare(b.querySelector('h3').innerText);
+            });
+        } else if (criteria === 'z-a') {
+            productCards.sort((a, b) => {
+                return b.querySelector('h3').innerText.localeCompare(a.querySelector('h3').innerText);
+            });
+        }
+        // Sort by Price (Low to High, High to Low)
+        else if (criteria === 'low-high') {
+            productCards.sort((a, b) => {
+                return parseFloat(a.querySelector('.price').dataset.price) - parseFloat(b.querySelector('.price').dataset.price);
+            });
+        } else if (criteria === 'high-low') {
+            productCards.sort((a, b) => {
+                return parseFloat(b.querySelector('.price').dataset.price) - parseFloat(a.querySelector('.price').dataset.price);
+            });
+        }
+        
+        // Re-render sorted products
+        const mainContent = document.getElementById('mainContent');
+        mainContent.innerHTML = '';  // Clear the existing products
+        productCards.forEach(card => mainContent.appendChild(card));  // Add sorted cards
+    }
+
+    // Show Human Organ Models by default
+    showCategory('humanOrganModels');
+    </script>
+</body>
+</html>
