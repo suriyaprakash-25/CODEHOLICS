@@ -1,0 +1,147 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background: url("background image.jpg") no-repeat center center fixed;
+    background-size: cover;
+    animation: backgroundMove 10s linear infinite;
+    overflow-x: hidden;
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+.team-section {
+    padding: 50px 20px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.team-section h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Card Styles */
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px; /* Reduced gap */
+    justify-items: center;
+}
+
+
+.team-card {
+    background: linear-gradient(to bottom, #ffffffdd, #e0e0ffdd); /* Contrast with background */
+    border-radius: 20px; /* Rounded corners */
+    width: 330px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+    animation: slideUp 1.5s ease-in-out;
+    color: #333;
+    position: relative;
+}
+
+.team-card:hover {
+    transform: scale(1.1) rotateY(10deg);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Photo */
+.team-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    transition: transform 0.4s ease;
+}
+
+.team-card:hover .team-photo {
+    transform: scale(1.2);
+}
+
+/* Info */
+.team-card h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #444;
+}
+
+.role {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.bio {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.contact-info {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-item {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+    color: #68a8f4;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline for links */
+    display: inline-block;
+    transform: translateY(10px);    
+    opacity: 0;
+    animation: fadeIn 1.5s ease forwards;
+}
+
+.contact-item:hover {
+    background-color: #68a8f4;
+    color: #fff;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
