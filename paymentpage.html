@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Payment portal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Portal</title>
+  <link rel="stylesheet" href="payment.js">
 </head>
 <body>
   <h1>Payment for <span id="bookName"></span></h1>
@@ -12,25 +15,18 @@
     <input type="text" name="address" placeholder="Enter your address" required>
     
     <h3>Payment Method</h3>
+    <label> 
     <input type="radio" name="paymentMethod" value="GPay" required> GPay<br>
     <input type="radio" name="paymentMethod" value="PhonePe"> PhonePe<br>
     <input type="radio" name="paymentMethod" value="CreditCard"> Credit Card<br>
-    <input type="radio" name="paymentMethod" value="DebitCard"> Debit Card<br>
+    <input type="radio" name="paymentMethod" value="DebitCard"> Debit Card<br></label>
     
     <input type="hidden" name="bookName" id="hiddenBookName">
     <input type="hidden" name="bookPrice" id="hiddenBookPrice">
+    
     <button type="submit">Pay Now</button>
   </form>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const bookName = params.get('name');
-    const bookPrice = params.get('price');
-
-    document.getElementById('bookName').textContent = bookName;
-    document.getElementById('bookPrice').textContent = bookPrice;
-    document.getElementById('hiddenBookName').value = bookName;
-    document.getElementById('hiddenBookPrice').value = bookPrice;
-  </script>
+  <script src="payment.js"></script>  <!-- Link to external JS file -->
 </body>
 </html>
