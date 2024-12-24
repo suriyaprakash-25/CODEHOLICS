@@ -1,10 +1,11 @@
 // Mouse movement effect for the login box
 const loginBox = document.getElementById("loginBox");
 document.addEventListener("mousemove", (event) => {
-    let x = (event.clientX / window.innerWidth) * 20 - 10;
-    let y = (event.clientY / window.innerHeight) * 20 - 10;
-    loginBox.style.transform = `perspective(600px) rotateX(${y}deg) rotateY(${x}deg)`;
+    let x = (event.clientX / window.innerWidth) * 20 - 10; // Mouse movement X
+    let y = (event.clientY / window.innerHeight) * 20 - 10; // Mouse movement Y
+    loginBox.style.transform = `perspective(600px) rotateX(${y}deg) rotateY(${x}deg)`; // Applying 3D effect
 });
+
 
 // Validation logic
 const loginForm = document.getElementById("loginForm");
