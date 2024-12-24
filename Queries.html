@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Queries - Anatomy Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2b2b2b;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    .container {
+      width: 80%;
+      margin: 20px auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #2b2b2b;
+      text-align: center;
+    }
+
+    .faq-section, .query-section {
+      margin-bottom: 40px;
+    }
+
+    .faq {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .faq-question {
+      font-weight: bold;
+      color: #2b2b2b;
+    }
+
+    .faq-answer {
+      margin-top: 5px;
+      color: #555;
+    }
+
+    .query-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .query-form input, .query-form textarea {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    .query-form button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .query-form button:hover {
+      background-color: #0056b3;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Anatomy Hub - Queries</h1>
+  </header>
+
+  <div class="container">
+    <!-- FAQ Section -->
+    <div class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq">
+        <div class="faq-question">What is 3D anatomy viewing?</div>
+        <div class="faq-answer">3D anatomy viewing allows users to explore human anatomy in a three-dimensional space, providing an immersive experience to learn about the body structures.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-question">How can I navigate the 3D model?</div>
+        <div class="faq-answer">Use your mouse to rotate the model, scroll to zoom in/out, and click to select specific parts for more detailed information.</div>
+      </div>
+      <div class="faq">
+        <div class="faq-question">Is the model interactive?</div>
+        <div class="faq-answer">Yes! You can interact with the model by clicking on body parts to get more information about each part's function and structure.</div>
+      </div>
+    </div>
+
+    <!-- Query Submission Form -->
+    <div class="query-section">
+      <h2>Have a Question? Submit Your Query</h2>
+      <form id="queryForm" class="query-form" onsubmit="return validateForm()">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="query">Your Query:</label>
+        <textarea id="query" name="query" rows="4" placeholder="Enter your question here..." required></textarea>
+
+        <button type="submit">Submit Query</button>
+
+        <div id="errorMessage" class="error"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Form validation function
+    function validateForm() {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let query = document.getElementById("query").value;
+      let errorMessage = document.getElementById("errorMessage");
+      
+      // Check if any field is empty
+      if (name == "" || email == "" || query == "") {
+        errorMessage.textContent = "All fields are required!";
+        return false;
+      }
+
+      // Email validation using a basic regular expression
+      let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+      if (!email.match(emailPattern)) {
+        errorMessage.textContent = "Please enter a valid email address!";
+        return false;
+      }
+
+      // If everything is valid, submit the form (just hide error message)
+      errorMessage.textContent = "";
+      alert("Query submitted successfully!");
+      return true;
+    }
+  </script>
+
+</body>
+</html>
