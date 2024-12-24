@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Login Page</title>
-    <link href="stylesloginpage.css" rel="stylesheet"></link>
-    </head>
+    <link href="stylesloginpage.css" rel="stylesheet">
+    <script src="loginpagejs.js" defer></script>
+</head>
 <body>
-    <!-- Title and Catchy Phrase -->
     <div class="title">Anatomy Hub</div>
     <div class="catchy-phrase">Unlock the Secrets of the Human Body</div>
-
     <div class="login-container">
         <div class="login-box" id="loginBox">
             <h1>LOGIN</h1>
@@ -37,83 +36,9 @@
                 </div>
                 <button type="submit" class="btn">Login</button>
             </form>
-
             <!-- This link will show after successful login -->
-            <a href="proj2.html" class="nav-link" id="navLink" >Go to Dashboard</a>
+            <a href="proj2.html" class="nav-link" id="navLink">Go to Dashboard</a>
         </div>
     </div>
-
-    <script>
-        // Mouse movement effect for the login box
-        const loginBox = document.getElementById("loginBox");
-
-        document.addEventListener("mousemove", (event) => {
-            let x = (event.clientX / window.innerWidth) * 20 - 10;
-            let y = (event.clientY / window.innerHeight) * 20 - 10;
-            loginBox.style.transform = `perspective(600px) rotateX(${y}deg) rotateY(${x}deg)`;
-        });
-
-        // Validation logic
-        const loginForm = document.getElementById("loginForm");
-        const emailInput = document.getElementById("email");
-        const ageInput = document.getElementById("age");
-        const usernameInput = document.getElementById("username");
-        const passwordInput = document.getElementById("password");
-        const navLink = document.getElementById("navLink");
-
-        loginForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            // Clear previous error messages
-            const errorMessages = document.querySelectorAll(".error-message");
-            errorMessages.forEach((error) => (error.style.display = "none"));
-
-            let isValid = true;
-
-            // Validate Email
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if (!emailRegex.test(emailInput.value)) {
-                showError(emailInput, "Please enter a valid email address.");
-                isValid = false;
-            }
-
-            // Validate Age
-            if (ageInput.value < 18) {
-                showError(ageInput, "You must be at least 18 years old.");
-                isValid = false;
-            }
-
-            // Validate Username (fixed regex for special character)
-            const usernameRegex = /^(?=.*[A-Z])(?=.*[_$!]).+$/;
-            if (!usernameRegex.test(usernameInput.value)) {
-                showError(
-                    usernameInput,
-                    "Username must contain at least one uppercase letter and one special character (_, $, or !)."
-                );
-                isValid = false;
-            }
-
-            // Validate Password
-            if (passwordInput.value !== "science") {
-                showError(passwordInput, "Password must be 'science'.");
-                isValid = false;
-            }
-
-            // If all validations pass
-            if (isValid) {
-                alert("Login successful!");
-                // Show the navigation link after successful login
-                navLink.style.display = "block";
-                loginForm.reset();
-            }
-        });
-
-        function showError(input, message) {
-            const formGroup = input.parentElement;
-            const errorMessage = formGroup.querySelector(".error-message");
-            errorMessage.textContent = message;
-            errorMessage.style.display = "block";
-        }
-    </script>
 </body>
 </html>
