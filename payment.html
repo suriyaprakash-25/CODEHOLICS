@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title> 
+    <script>
+    // Extract query parameters from the URL
+function getQueryParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return {
+        name: urlParams.get('name'),
+        price: urlParams.get('price'),
+        image: urlParams.get('image')
+    };
+}
+
+// Populate the product details
+document.addEventListener('DOMContentLoaded', () => {
+    const { name, price, image } = getQueryParams();
+
+    if (name && price && image) {
+        document.getElementById('product-name').innerText = name;
+        document.getElementById('product-price').innerText = `$${price}`;
+        document.getElementById('product-image').src = image;
+        document.getElementById('total-price').innerText = `$${price}`;
+    }
+});
+    </script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f3e7e9, #e3eefb);
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #4a90e2;
+            font-weight: bold;
+        }
+
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product-details img {
+            width: 100px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .details {
+            flex-grow: 1;
+            margin-left: 1rem;
+        }
+
+        .details h3 {
+            font-size: 1.4rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .details p {
+            margin: 0.2rem 0;
+            font-size: 1rem;
+        }
+
+        .address-form {
+            margin: 1.5rem 0;
+        }
+
+        .address-form label {
+            display: block;
+            font-weight: bold;
+            margin: 0.5rem 0 0.3rem;
+        }
+
+        .address-form input, .address-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        .address-form input:focus, .address-form textarea:focus {
+            border-color: #4a90e2;
+            outline: none;
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
+
+        .total-amount {
+            text-align: right;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .payment-options {
+            text-align: center;
+        }
+
+        .payment-options button {
+            background-color: #4a90e2;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .payment-options button:hover {
+            background-color: #357ab8;
+            transform: scale(1.05);
+        }
+
+        .payment-options button:active {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Payment Details</div>
+
+        <!-- Selected Product Details -->
+        <div class="product-details">
+            <img id="product-image" src="" alt="Product Image">
+            <h2 id="product-name"></h2>
+            <p id="product-price"></p>
+        </div>
+        
+        <div class="total">
+            <p>Total Amount: <span id="total-price"></span></p>
+        </div>
+                    
+
+        <!-- Address Form -->
+        <div class="address-form">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+
+            <label for="address">Shipping Address</label>
+            <textarea id="address" rows="3" placeholder="Enter your shipping address" required></textarea>
+
+            <label for="pincode">Pincode</label>
+            <input type="text" id="pincode" placeholder="Enter your pincode" required>
+        </div>
+
+        <!-- Total Amount -->
+        <div class="total-amount">Total Amount to Pay: ₹500</div>
+
+        <!-- Payment Options -->
+        <div class="payment-options">
+            <p>Select Payment Method:</p>
+            <button>GPay</button>
+            <button>PhonePe</button>
+            <button>Credit/Debit Card</button>
+        </div>
+    </div>
+</body>
+</html>
+
+
