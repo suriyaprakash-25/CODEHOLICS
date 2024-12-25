@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three Images in a Row</title>
+    <link rel="stylesheet" href="dissection.css">
+</head>
+<body>
+    <div class="image-row">
+        <img src="https://p.turbosquid.com/ts-thumb/TU/XHAipO/lB8e1eaC/signature_006/png/1518669717/1920x1080/fit_q87/be34f628be48072b2b4ba461d34a8ee8ee9fe19a/signature_006.jpg" alt="Image 1" class="image" onclick="showText(1)">
+        <img src="https://p.turbosquid.com/ts-thumb/TU/XHAipO/AadzSgZU/signature_005/png/1518668975/1920x1080/fit_q87/29df54888d115727456d6aecd9d83b86091ac414/signature_005.jpg" alt="Image 2" class="image" onclick="showText(2)">
+        <img src="https://p.turbosquid.com/ts-thumb/TU/XHAipO/zvVhbu3R/signature_007/png/1518669717/1920x1080/fit_q87/7c70a03f064343525b3fc7875c42f535959976d9/signature_007.jpg" alt="Image 3" class="image" onclick="showText(3)">
+    </div>
+
+    <div class="image-text-container">
+        <p id="text1" class="image-text"></p>
+        <p id="text2" class="image-text"></p>
+        <p id="text3" class="image-text"></p>
+    </div>
+
+    <input type="text" id="inputText" placeholder="Enter text for selected image" />
+</body>
+<script src="script.js"></script>
+</html>

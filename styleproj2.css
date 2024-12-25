@@ -1,16 +1,3 @@
-/* General Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-image: url('https://www.techicy.com/wp-content/uploads/2021/03/Science-Of-Memory-5-Memory-Techniques-747x420.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: #333;
-    height: 100%;
-}
-
 /* Navbar */
 .navbar {
     display: flex;
@@ -128,7 +115,7 @@ body {
 /* Features Section */
 #features {
     padding: 50px;
-    background-image: url('https://www.techicy.com/wp-content/uploads/2021/03/Science-Of-Memory-5-Memory-Techniques-747x420.jpg');
+    background-image: url('');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -216,13 +203,14 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('https://www.techicy.com/wp-content/uploads/2021/03/Science-Of-Memory-5-Memory-Techniques-747x420.jpg');
+    background-image: url('https://cdn.wallpapersafari.com/16/9/VYMZ5g.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: #333;
     height: 100%; /* Full height of the viewport */
     overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-family: 'Arial', sans-serif;
 }
 
 

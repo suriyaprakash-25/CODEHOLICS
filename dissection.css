@@ -1,0 +1,60 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black; /* Page background color */
+    height: 100vh; /* Full height */
+    display: flex;
+    justify-content: center; /* Centers the row horizontally */
+    align-items: center; /* Centers the row vertically */
+    padding: 15px; /* Adds padding around the edges of the page */
+    flex-direction: column;
+}
+
+.image-row {
+    display: flex; /* Aligns items in a single row */
+    gap: 15px; /* Adds spacing between images */
+}
+
+.image {
+    width: calc((100% / 3) - 30px); /* Divides the width equally for three images minus padding */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensures the image fills its container while maintaining aspect ratio */
+    border-radius: 10px; /* Adds curvature to the edges */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Adds box-shadow */
+    cursor: pointer; /* Changes the cursor on hover */
+}
+
+.image-text-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.image-text {
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+    min-height: 30px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+input[type="text"] {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    width: 60%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border: 2px solid #00f;
+}
+
