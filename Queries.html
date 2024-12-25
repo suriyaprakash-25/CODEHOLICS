@@ -1,158 +1,194 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Queries - Anatomy Hub</title>
-    <link rel="stylesheet" href="queries.css">
     <style>
-        /* Big heading with 3D-like visibility */
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f7f7f7; /* Light grey background similar to Quora */
+            color: #333;
+            padding: 20px;
+        }
+
+        header {
+            background: #b92e2b; /* Maroon background for header */
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            border-radius: 8px;
+        }
+
         header h1 {
-            font-size: 4rem;
-            text-align: center;
-            color: white;
+            font-size: 3.5rem;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            margin: 20px 0;
+            letter-spacing: 2px;
         }
 
-        /* FAQ Section with custom layout */
-        .faq-section {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #fff; /* White background for content area */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .faq-section .faq:first-child {
-            grid-column: span 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+        .faq-section h2, .query-section h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #b92e2b; /* Maroon color for section titles */
+            border-bottom: 2px solid #b92e2b;
+            display: inline-block;
+            padding-bottom: 5px;
         }
 
-        .faq-section .faq:first-child .faq-question {
-            width: 100%;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        /* Hover effects and box shadows for FAQs */
         .faq {
-            margin: 10px 0;
+            margin: 15px 0;
             padding: 15px;
-            border: 1px solid #ccc;
+            background: #f1f1f1; /* Light grey background for FAQs */
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .faq:hover {
-            background-color: #f9f9f9;
+            transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transform: translateY(-5px);
         }
 
-        /* Black borders for input boxes */
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 2px solid black;
-            border-radius: 5px;
+        .faq-question {
+            font-weight: bold;
+            color: #b92e2b; /* Maroon color for questions */
+        }
+
+        .faq-answer {
+            margin-top: 8px;
+            color: #555;
+        }
+
+        .query-form {
+            margin-top: 20px;
         }
 
         label {
-            display: block;
-            margin: 10px 0 5px;
             font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #333;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: #f7f7f7; /* Light background for inputs */
+            color: #333;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #b92e2b; /* Maroon focus color */
+            outline: none;
         }
 
         button {
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
+            background-color: #b92e2b; /* Maroon color for button */
+            color: #fff;
+            padding: 10px 15px;
+            font-size: 1rem;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #9b1e1a; /* Darker maroon on hover */
         }
 
-        .error {
-            color: red;
-            margin-top: 10px;
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            font-size: 0.9rem;
         }
     </style>
     <script>
         function validateForm() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const query = document.getElementById('query').value;
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const query = document.getElementById("query").value;
 
-            if (!name || !email || !query) {
-                document.getElementById('errorMessage').innerText = "All fields are required.";
+            if (name && email && query) {
+                document.body.innerHTML = `
+                    <div style="text-align: center; padding: 50px;">
+                        <h1 style="color: #b92e2b;">Question Posted Successfully!</h1>
+                        <p>Thank you, <strong>${name}</strong>. We will get back to you at <strong>${email}</strong>.</p>
+                        <a href="queries.html" style="color: #b92e2b; text-decoration: underline; font-size: 1.2rem;">Go back to Queries page</a>
+                    </div>
+                `;
                 return false;
             }
-
-            // Redirect to success page
-            window.location.href = "success.html";
-            return false; // Prevent default form submission
+            return true;
         }
     </script>
 </head>
 <body>
-    <header>
-        <h1>Anatomy Hub - Queries</h1>
-    </header>
-    <div class="container">
-        <!-- FAQ Section -->
-         <h1>FREQUENTLY ASKED QUESTIONS</h1>
-        <div class="faq-section">
-            <div class="faq">
-                <div class="faq-question">What is 3D anatomy viewing?</div>
-                <div class="faq-answer">3D anatomy viewing allows users to explore human anatomy in a three-dimensional space, providing an immersive experience to learn about the body structures.</div>
-            </div>
-            <div class="faq">
-                <div class="faq-question">How can I navigate the 3D model?</div>
-                <div class="faq-answer">Use your mouse to rotate the model, scroll to zoom in/out, and click to select specific parts for more detailed information.</div>
-            </div>
-            <div class="faq">
-                <div class="faq-question">Is the model interactive?</div>
-                <div class="faq-answer">Yes! You can interact with the model by clicking on body parts to get more information about each part's function and structure.</div>
-            </div>
-            <div class="faq">
-                <div class="faq-question">What devices support 3D anatomy viewing?</div>
-                <div class="faq-answer">The 3D model is compatible with most devices, including desktop computers, tablets, and smartphones. Ensure your browser supports WebGL for optimal performance.</div>
-            </div>
-            <div class="faq">
-                <div class="faq-question">Do I need an account to access the 3D model?</div>
-                <div class="faq-answer">No, you can access the 3D model without creating an account. However, signing up will allow you to save your preferences and queries.</div>
-            </div>
+<header>
+    <h1>Queries</h1>
+</header>
+<div class="container">
+    <!-- FAQ Section -->
+    <div class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="faq-question">What is 3D anatomy viewing?</div>
+            <div class="faq-answer">3D anatomy viewing allows users to explore human anatomy in a three-dimensional space, providing an immersive experience to learn about the body structures.</div>
         </div>
-        <!-- Query Submission Form -->
-        <div class="query-section">
-            <h2>Have a Question? Submit Your Query</h2>
-            <form id="queryForm" class="query-form" onsubmit="return validateForm()">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-
-                <label for="email">Your Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
-                <label for="query">Your Query:</label>
-                <textarea id="query" name="query" rows="4" placeholder="Enter your question here..." required></textarea>
-
-                <button type="submit">Submit Query</button>
-                <div id="errorMessage" class="error"></div>
-            </form>
+        <div class="faq">
+            <div class="faq-question">How can I navigate the 3D model?</div>
+            <div class="faq-answer">Use your mouse to rotate the model, scroll to zoom in/out, and click to select specific parts for more detailed information.</div>
+        </div>
+        <div class="faq">
+            <div class="faq-question">Is the model interactive?</div>
+            <div class="faq-answer">Yes! You can interact with the model by clicking on body parts to get more information about each part's function and structure.</div>
+        </div>
+        <div class="faq">
+            <div class="faq-question">What devices support 3D anatomy viewing?</div>
+            <div class="faq-answer">The 3D model is compatible with most devices, including desktop computers, tablets, and smartphones. Ensure your browser supports WebGL for optimal performance.</div>
+        </div>
+        <div class="faq">
+            <div class="faq-question">Do I need an account to access the 3D model?</div>
+            <div class="faq-answer">No, you can access the 3D model without creating an account. However, signing up will allow you to save your preferences and queries.</div>
         </div>
     </div>
-    <footer>
-        <p>&copy; 2024 Anatomy Hub. All Rights Reserved.</p>
-    </footer>
+    <!-- Query Submission Form -->
+    <div class="query-section">
+        <h2>Have a Question? Submit Your Query</h2>
+        <form id="queryForm" class="query-form" onsubmit="return validateForm()">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <label for="query">Your Query:</label>
+            <textarea id="query" name="query" rows="4" placeholder="Enter your question here..." required></textarea>
+            <button type="submit">Submit Query</button>
+        </form>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 Anatomy Hub. All Rights Reserved.</p>
+</footer>
 </body>
 </html>
