@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - Anatomy Hub</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            margin: 0;
+            padding: 0;
+            /* Set the background image with slight transparency */
+            background: url('https://img.freepik.com/premium-photo/big-data-green-background-sustainable-data-energy-concept_238498-88.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            color: #333;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+            color: black;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 20px;
+            transition: background 0.3s ease;
+        }
+
+        header:hover {
+            background: rgba(255, 255, 255, 1); /* Solid white on hover */
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin: 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.3em;
+            font-style: italic;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 30px;
+            margin: 20px auto;
+            width: 90%;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.9); /* Slight transparency for boxes */
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #f8b3b6;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+            font-size: 1.1em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #56ccf2, #7ed321); /* Bluish-green gradient */
+        }
+
+        .box h2 {
+            font-weight: bold;
+            color: #2575fc;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .box p {
+            font-size: 1em;
+            line-height: 1.8;
+        }
+
+        .box ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            text-align: left;
+        }
+
+        .box ul li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+            color: black;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 30px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        footer:hover {
+            background: rgba(255, 255, 255, 1); /* Solid white on hover */
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        .future-ideas {
+            grid-column: span 2;
+            background: rgba(255, 255, 255, 0.9); /* Slight transparency for the future ideas box */
+            padding: 20px;
+            border: 2px solid #f8b3b6;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .future-ideas:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #56ccf2, #7ed321); /* Bluish-green gradient */
+        }
+
+        .future-ideas h2 {
+            color: #2575fc;
+            margin-bottom: 15px;
+            font-size: 1.7em;
+            font-weight: bold;
+        }
+
+        .future-ideas p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>How It Works - Anatomy Hub</h1>
+        <p>Explore the science and technology behind Anatomy Hub.</p>
+    </header>
+
+    <div class="container">
+        <div class="box">
+            <h2>About Anatomy Hub</h2>
+            <p>An engaging platform offering interactive 3D models to explore human head anatomy in detail. Designed to make learning anatomy accessible and fun for all.</p>
+            <ul>
+                <li>Interactive 3D models</li>
+                <li>Detailed human head anatomy</li>
+                <li>Fun and educational platform</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>The Science Behind It</h2>
+            <p>Using data from advanced imaging technologies like CT and MRI scans, we create precise, interactive 3D models. Each model reflects accurate anatomical details.</p>
+            <ul>
+                <li>CT and MRI scan data</li>
+                <li>Precise anatomical models</li>
+                <li>Interactive 3D exploration</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>Trusted Information</h2>
+            <p>Content sourced from verified medical journals, textbooks, and expert professionals ensures reliability and accuracy in every detail.</p>
+            <ul>
+                <li>Verified medical journals</li>
+                <li>Textbook references</li>
+                <li>Expert professional insights</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>Understanding Disorders</h2>
+            <p>Discover how disorders affect specific regions of the head, with detailed explanations of symptoms, causes, and treatments tailored for educational purposes.</p>
+            <ul>
+                <li>Head disorder insights</li>
+                <li>Symptoms, causes, and treatments</li>
+                <li>Educational content for better understanding</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>Remedies and Medications</h2>
+            <p>Learn about effective remedies, including medications and lifestyle adjustments, backed by clinical guidelines for better understanding.</p>
+            <ul>
+                <li>Effective remedies</li>
+                <li>Medication insights</li>
+                <li>Guidelines for lifestyle adjustments</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>Your Learning Hub</h2>
+            <p>With a user-friendly interface and engaging visuals, Anatomy Hub is designed to inspire curiosity and deepen your understanding of human anatomy.</p>
+            <ul>
+                <li>Engaging and user-friendly interface</li>
+                <li>Curiosity-driven learning</li>
+                <li>Visual tools for deeper understanding</li>
+            </ul>
+        </div>
+
+        <!-- Future Ideas Section -->
+        <div class="future-ideas">
+            <h2>Future Ideas</h2>
+            <p>As part of our future expansion, we aim to introduce an app and online platform that can analyze an individual's medical reports. By leveraging artificial intelligence, the system will offer personalized medical suggestions and advice directly to users based on their health data. This innovation will allow individuals to gain insights into their health and receive timely recommendations for treatments and lifestyle adjustments, all through an easy-to-use interface.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Anatomy Hub. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
