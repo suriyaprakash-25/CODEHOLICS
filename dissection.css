@@ -9,15 +9,19 @@ body {
     background-color: black; /* Page background color */
     height: 100vh; /* Full height */
     display: flex;
-    justify-content: center; /* Centers the row horizontally */
-    align-items: center; /* Centers the row vertically */
-    padding: 15px; /* Adds padding around the edges of the page */
+    justify-content: flex-start; /* Aligns the content to the top */
+    align-items: center; /* Centers the content vertically */
     flex-direction: column;
+    padding: 15px; /* Adds padding around the edges of the page */
+    overflow-y: auto; /* Enables vertical scrolling */
 }
 
 .image-row {
     display: flex; /* Aligns items in a single row */
     gap: 15px; /* Adds spacing between images */
+    margin-bottom: 20px; /* Adds spacing between images and text */
+    flex-wrap: wrap; /* Ensures images will wrap if screen is too small */
+    justify-content: center; /* Centers images horizontally */
 }
 
 .image {
@@ -26,35 +30,20 @@ body {
     object-fit: cover; /* Ensures the image fills its container while maintaining aspect ratio */
     border-radius: 10px; /* Adds curvature to the edges */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Adds box-shadow */
-    cursor: pointer; /* Changes the cursor on hover */
+    cursor: pointer;
 }
 
-.image-text-container {
-    width: 100%;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.image-text {
+/* Text Container */
+#text-container {
     color: white;
-    font-size: 16px;
-    margin-top: 10px;
-    min-height: 30px;
-    display: inline-block;
-    white-space: nowrap;
-}
-
-input[type="text"] {
+    font-family: 'Courier New', Courier, monospace;
     margin-top: 20px;
-    padding: 10px;
-    font-size: 16px;
-    width: 60%;
-    border-radius: 5px;
-    border: none;
-    outline: none;
+    width: 90%; /* Limits the width to 90% of the screen */
+    max-width: 800px; /* Optional: Max width to avoid excessive text width */
+    text-align: left;
+    font-size: 18px;
+    display: none; /* Initially hidden */
+    white-space: pre-wrap; /* Preserves line breaks */
+    word-wrap: break-word; /* Allows wrapping of long words */
+    line-height: 1.5; /* Improves readability by increasing line height */
 }
-
-input[type="text"]:focus {
-    border: 2px solid #00f;
-}
-
