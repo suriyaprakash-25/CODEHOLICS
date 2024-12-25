@@ -7,14 +7,14 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+    background-color: #e3cccc;
     color: #333;
     padding: 20px;
 }
 
 h1 {
     text-align: center;
-    color: #ffffff; /* Bright white text for the title */
+    color: #000; /* Heading in black */
     font-size: 3rem;
     margin-bottom: 40px;
 }
@@ -37,10 +37,10 @@ h1 {
     background-size: cover;
     background-position: center;
     padding: 20px;
-    color: #ffffff; /* White text for better visibility */
+    color: #ffffff; /* Ensure text is white */
 }
 
-/* Add an overlay to dull the background image only */
+/* Dim background with reduced opacity for better visibility */
 .service-box::before {
     content: '';
     position: absolute;
@@ -48,25 +48,27 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Reduced overlay opacity for better text visibility */
-    z-index: 0; /* Place it below the text content */
+    background-color: rgba(0, 0, 0, 0.3); /* Reduce overlay opacity to make text brighter */
+    z-index: 0; /* Keep the dimmed background beneath the text */
 }
 
-/* Headings with Even Brighter White Text */
+/* Headings with Brighter White Text and Stronger Shadow */
 .service-box h2 {
-    font-size: 2.5rem;
-    color: #ffffff; /* Bright white text for headings */
-    font-weight: bold;
+    font-size: 2.8rem; /* Increase size for better visibility */
+    font-weight: 900; /* Bold and heavy weight for headings */
+    color: #ffffff !important; /* Ensure the heading is white and overrides any conflicting styles */
     margin-bottom: 10px;
     z-index: 1; /* Ensure the heading is above the overlay */
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8); /* Stronger shadow for better contrast */
 }
 
-/* Paragraph with Even Brighter White Text */
+/* Paragraph with Brighter White Text */
 .service-box p {
-    font-size: 1.2rem;
-    color: #ffffff; /* Bright white text for paragraph */
+    font-size: 1.3rem; /* Larger font size for better readability */
+    color: #ffffff !important; /* Ensure the paragraph is white */
     margin-bottom: 20px;
     z-index: 1; /* Ensure the paragraph is above the overlay */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Stronger shadow for better visibility */
 }
 
 /* Button at the Bottom */
@@ -97,7 +99,7 @@ h1 {
 }
 
 .service-box-2 {
-    background-image: url('');
+    background-image: url(''); /* Add a background image URL for service-box-2 */
 }
 
 .service-box-3 {
@@ -112,6 +114,6 @@ h1 {
 footer {
     text-align: center;
     margin-top: 50px;
-    color: #777;
-    font-size: 0.9rem;
+    color: #2e2c2c;
+    font-size: 1.2rem;
 }
