@@ -63,8 +63,8 @@ body {
 
 /* Photo */
 .team-photo {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
@@ -97,31 +97,24 @@ body {
 }
 
 .contact-info {
-    margin-top: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: flex; /* Use flexbox */
+    flex-direction: row; /* Horizontal alignment */
+    justify-content: center; /* Center align the icons */
+    gap: 30px; /* Add spacing between icons */
+    margin-top: 10px;
 }
 
 .contact-item {
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 10px;
-    border-radius: 8px;
-    color: #68a8f4;
-    font-size: 0.9rem;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none; /* Remove underline for links */
-    display: inline-block;
-    transform: translateY(10px);    
-    opacity: 0;
-    animation: fadeIn 1.5s ease forwards;
+    font-size: 1.5em;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
 .contact-item:hover {
-    background-color: #68a8f4;
-    color: #fff;
+    color: #0077b5; /* Change hover color (e.g., LinkedIn Blue) */
 }
+
 
 /* Animations */
 @keyframes fadeIn {
