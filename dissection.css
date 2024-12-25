@@ -7,49 +7,54 @@
 
 body {
     background-color: black; /* Page background color */
-    font-family: Arial, sans-serif;
-    height: 100vh;
+    height: 100vh; /* Full height */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centers the row horizontally */
+    align-items: center; /* Centers the row vertically */
+    padding: 15px; /* Adds padding around the edges of the page */
+    flex-direction: column;
 }
 
-.container {
-    display: flex;
-    width: 100%; /* Full width of the page */
-    max-width: 1200px; /* Max width for the layout */
-    gap: 20px; /* Gap between sections */
-    padding: 20px;
+.image-row {
+    display: flex; /* Aligns items in a single row */
+    gap: 15px; /* Adds spacing between images */
 }
 
-.section {
-    background-color: #808080; /* Grey color for sections */
-    border-radius: 15px; /* Curved border radius */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Box shadow */
-    color: white;
-    padding: 20px;
+.image {
+    width: calc((100% / 3) - 30px); /* Divides the width equally for three images minus padding */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensures the image fills its container while maintaining aspect ratio */
+    border-radius: 10px; /* Adds curvature to the edges */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Adds box-shadow */
+    cursor: pointer; /* Changes the cursor on hover */
+}
+
+.image-text-container {
     width: 100%;
-    flex: 1; /* Make each section flexible */
+    text-align: center;
+    margin-top: 20px;
 }
 
-.left {
-    flex: 0.3; /* Left section takes up 30% of the width */
+.image-text {
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+    min-height: 30px;
+    display: inline-block;
+    white-space: nowrap;
 }
 
-.center {
-    flex: 0.4; /* Center section takes up 40% of the width */
+input[type="text"] {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    width: 60%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
 }
 
-.right {
-    flex: 0.3; /* Right section takes up 30% of the width */
+input[type="text"]:focus {
+    border: 2px solid #00f;
 }
 
-h2 {
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-}
-
-p {
-    font-size: 1rem;
-    line-height: 1.5;
-}
