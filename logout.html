@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logging Out</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Clear the authentication token or session data
+            localStorage.removeItem('authToken');
+
+            // Redirect to the login page after a short delay
+            setTimeout(() => {
+                window.location.href = 'loginpage.html';
+            }, 800); // 1 second delay for a smooth transition
+        });
+    </script>
+    <style>
+        .div{
+            text-align: center; margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>You are being logged out...</h1>
+        <p>Redirecting to the login page...</p>
+    </div>
+</body>
+</html>
