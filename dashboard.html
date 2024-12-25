@@ -6,10 +6,18 @@
     <title>Human Anatomy Explorer</title>
     <link rel="stylesheet" href="styleproj2.css">
     <script>
-        if (!sessionStorage.getItem('authToken')) {
-    window.location.href = 'login.html'; // Redirect to login if not authenticated
-}
+        document.addEventListener("DOMContentLoaded", function () {
+            // Check if the user is authenticated
+            const isAuthenticated = sessionStorage.getItem('authToken');
 
+            // Detect page refresh (using performance navigation type or referrer)
+            const isPageRefresh = performance.navigation.type === 1;
+
+            if (!isAuthenticated && isPageRefresh) {
+                // Redirect to login if not authenticated and the page is refreshed
+                window.location.href = 'loginpage.html';
+            }
+        });
     </script>
 </head>
 <body>
@@ -22,12 +30,11 @@
                 <li><a href="insights.html">Insights</a></li>
                 <li><a href="Queries.html">Help</a></li>
                 <li><a href="portfolio.html">Contact</a></li>
+                <li><a href="logout.html" id="logout-btn">Logout</a></li>
             </ul>
         </nav>
-
     </header>
     <section class="hero">
-        
         <h1>Explore Human Anatomy</h1>
         <p>The ultimate platform to explore, learn, and visualize human anatomy in stunning 3D.</p>
         <div class="statistics">
@@ -41,13 +48,7 @@
             </div>
         </div>
         <a href="howitworks.html"><button class="btn">How it Works</button></a>
-    
-        
     </section>
-    
-    
-    
-
     <section id="features">
         <h2>Why Choose Us</h2>
         <div class="features">
@@ -65,6 +66,5 @@
             </div>
         </div>
     </section>
-
 </body>
 </html>
