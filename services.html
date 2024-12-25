@@ -35,6 +35,9 @@
             margin-bottom: 30px;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -57,8 +60,12 @@
         .service-box .content {
             padding: 20px;
             text-align: center;
-            position: relative;
             z-index: 1;
+            margin-top: 40px; /* Give space for the heading */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: calc(100% - 40px); /* Take full height minus heading space */
         }
 
         .service-box h2 {
@@ -83,6 +90,7 @@
             cursor: pointer;
             text-decoration: none;
             transition: background-color 0.3s ease;
+            align-self: center;
         }
 
         .service-box .service-btn:hover {
