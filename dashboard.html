@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Human Anatomy Explorer</title>
     <link rel="stylesheet" href="styleproj2.css">
+    <script>
+        if (!sessionStorage.getItem('authToken')) {
+    window.location.href = 'login.html'; // Redirect to login if not authenticated
+}
+
+    </script>
 </head>
 <body>
     <header class="navbar">
