@@ -4,142 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - Anatomy Hub</title>
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7; /* Light background */
-            color: #333;
-            padding: 20px;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7; /* Light background */
+    color: #333;
+    padding: 20px;
+}
 
-        h1 {
-            text-align: center;
-            color: #b92e2b;
-            font-size: 3rem;
-            margin-bottom: 40px;
-        }
+h1 {
+    text-align: center;
+    color: #b92e2b;
+    font-size: 3rem;
+    margin-bottom: 40px;
+}
 
-        .service-box {
-            width: 100%;
-            height: 400px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+/* Background image for individual service boxes with transparency */
+.service-box {
+    width: 100%;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-size: cover; /* Ensure the image covers the entire box */
+    background-position: center; /* Center the background image */
+    background-blend-mode: overlay; /* Blend the image with a solid color for transparency effect */
+}
 
-        .service-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+/* Ensure images within the content stay visible */
+.service-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Ensure image is behind text */
+}
 
-        .service-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1; /* Ensure image is behind text */
-            opacity: 0.7; /* Semi-transparent by default */
-        }
+.service-box .content {
+    padding: 20px;
+    text-align: center;
+    z-index: 1;
+    margin-top: 40px; /* Give space for the heading */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 40px); /* Take full height minus heading space */
+}
 
-        .service-box .content {
-            padding: 20px;
-            text-align: center;
-            z-index: 1;
-            margin-top: 40px; /* Give space for the heading */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: calc(100% - 40px); /* Take full height minus heading space */
-        }
+.service-box h2 {
+    font-size: 2.5rem;
+    color: #000; /* Black text */
+    font-weight: bold; /* Make text bold */
+    margin-bottom: 10px;
+}
 
-        .service-box h2 {
-            font-size: 2.5rem;
-            color: #b92e2b;
-            margin-bottom: 10px;
-        }
+.service-box p {
+    font-size: 1.2rem;
+    color: #000; /* Black text */
+    font-weight: bold; /* Make text bold */
+    margin-bottom: 20px;
+}
 
-        .service-box p {
-            font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 20px;
-            font-weight: 900; /* Make the paragraph text bold and more prominent */
-        }
+.service-box .service-btn {
+    background-color: #b92e2b;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
 
-        .service-box .service-btn {
-            background-color: #b92e2b;
-            color: #fff;
-            padding: 12px 20px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            align-self: center;
-        }
+.service-box .service-btn:hover {
+    background-color: #9b1e1a;
+}
 
-        .service-box .service-btn:hover {
-            background-color: #9b1e1a;
-        }
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #777;
+    font-size: 0.9rem;
+}
 
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            color: #777;
-            font-size: 0.9rem;
-        }
-    </style>
+/* Specific background images for each service box */
+.service-box-1 {
+    background-image: url('https://img.pikbest.com/wp/202344/web-background-textures-like-texture-creates-an-aesthetic_9931755.jpg!sw800');
+}
+
+.service-box-2 {
+    background-image: url('https://example.com/your-second-background-image.jpg');
+}
+
+.service-box-3 {
+    background-image: url('https://example.com/your-third-background-image.jpg');
+}
+
+.service-box-4 {
+    background-image: url('https://example.com/your-fourth-background-image.jpg');
+}
+
+</style>
 </head>
 <body>
     <h1>Our Services</h1>
+
     <div class="service-box">
         <div class="content">
             <h2>3D View of Anatomy</h2>
             <p>Explore detailed, interactive 3D models of the human body. Rotate and zoom in on anatomical structures for an immersive learning experience.</p>
             <a href="3d-view.html" class="service-btn">Explore 3D View</a>
         </div>
-        <img src="https://media.istockphoto.com/id/530199842/photo/3d-illustration-of-heart-medical-concept.jpg?s=612x612&w=0&k=20&c=4OndFgI-QkDkPGs_zBeRVVIdofZKQ1ogEX5bhCEW4-g=" alt="3D Anatomy" /> <!-- Replace with your own image -->
+        <img src="https://img.pikbest.com/wp/202344/web-background-textures-like-texture-creates-an-aesthetic_9931755.jpg!sw800 " alt="3D Anatomy" />
     </div>
+
     <div class="service-box">
         <div class="content">
             <h2>Medical Diagnosis for Defects</h2>
             <p>Our platform allows medical professionals to conduct diagnosis through advanced anatomical analysis to identify defects and abnormalities.</p>
             <a href="medical-diagnosis.html" class="service-btn">Learn More</a>
         </div>
-        <img src="medical-diagnosis-image.jpg" alt="Medical Diagnosis" /> <!-- Replace with your own image -->
+        <img src="images/medical-diagnosis-image.jpg" alt="Medical Diagnosis" />
     </div>
+
     <div class="service-box">
         <div class="content">
             <h2>Full View of Dissections of Skulls and Organs</h2>
             <p>Gain a thorough understanding of body structures with our full dissections of skulls and organs, featuring detailed views and descriptions.</p>
             <a href="dissections.html" class="service-btn">View Dissections</a>
         </div>
-        <img src="dissections-image.jpg" alt="Dissections" /> <!-- Replace with your own image -->
+        <img src="images/dissections-image.jpg" alt="Dissections" />
     </div>
+
     <div class="service-box">
         <div class="content">
             <h2>Buying Products from Our Site</h2>
             <p>We offer a range of educational products, including models, books, and equipment to enhance your learning experience. Shop now!</p>
-            <a href="products.html" class="service-btn">Shop Now</a>
+            <a href="purchasepage.html" class="service-btn">Shop Now</a>
         </div>
-        <img src="buy-products-image.jpg" alt="Buy Products" /> <!-- Replace with your own image -->
+        <img src="images/buy-products-image.jpg" alt="Buy Products" />
     </div>
+
     <footer>
         <p>&copy; 2024 Anatomy Hub. All Rights Reserved.</p>
     </footer>
