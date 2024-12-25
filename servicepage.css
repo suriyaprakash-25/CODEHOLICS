@@ -1,117 +1,117 @@
-    /* General Reset */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f7f7f7; /* Light background */
-        color: #333;
-        padding: 20px;
-    }
-    
-    h1 {
-        text-align: center;
-        color: #b92e2b;
-        font-size: 3rem;
-        margin-bottom: 40px;
-    }
-    
-    /* Background image for individual service boxes with transparency */
-    .service-box {
-        width: 100%;
-        height: 400px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        margin-bottom: 30px;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        background-size: cover; /* Ensure the image covers the entire box */
-        background-position: center; /* Center the background image */
-        background-blend-mode: overlay; /* Blend the image with a solid color for transparency effect */
-    }
-    
-    /* Ensure images within the content stay visible */
-    .service-box img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1; /* Ensure image is behind text */
-    }
-    
-    .service-box .content {
-        padding: 20px;
-        text-align: center;
-        z-index: 1;
-        margin-top: 40px; /* Give space for the heading */
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: calc(100% - 40px); /* Take full height minus heading space */
-    }
-    
-    .service-box h2 {
-        font-size: 2.5rem;
-        color: #000; /* Black text */
-        font-weight: bold; /* Make text bold */
-        margin-bottom: 10px;
-    }
-    
-    .service-box p {
-        font-size: 1.2rem;
-        color: #000; /* Black text */
-        font-weight: bold; /* Make text bold */
-        margin-bottom: 20px;
-    }
-    
-    .service-box .service-btn {
-        background-color: #b92e2b;
-        color: #fff;
-        padding: 12px 20px;
-        font-size: 1.1rem;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-        align-self: center;
-    }
-    
-    .service-box .service-btn:hover {
-        background-color: #9b1e1a;
-    }
-    
-    footer {
-        text-align: center;
-        margin-top: 50px;
-        color: #777;
-        font-size: 0.9rem;
-    }
-    
-    /* Specific background images for each service box */
-    .service-box-1 {
-        background-image: url('https://img.pikbest.com/wp/202344/web-background-textures-like-texture-creates-an-aesthetic_9931755.jpg!sw800');
-    }
-    
-    .service-box-2 {
-        background-image: url('https://example.com/your-second-background-image.jpg');
-    }
-    
-    .service-box-3 {
-        background-image: url('https://example.com/your-third-background-image.jpg');
-    }
-    
-    .service-box-4 {
-        background-image: url('https://example.com/your-fourth-background-image.jpg');
-    }
-    
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff; /* Bright white text for the title */
+    font-size: 3rem;
+    margin-bottom: 40px;
+}
+
+/* Service Box */
+.service-box {
+    width: 100%;
+    height: 450px; /* Increased height */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the text vertically */
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    color: #ffffff; /* White text for better visibility */
+}
+
+/* Add an overlay to dull the background image only */
+.service-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Reduced overlay opacity for better text visibility */
+    z-index: 0; /* Place it below the text content */
+}
+
+/* Headings with Even Brighter White Text */
+.service-box h2 {
+    font-size: 2.5rem;
+    color: #ffffff; /* Bright white text for headings */
+    font-weight: bold;
+    margin-bottom: 10px;
+    z-index: 1; /* Ensure the heading is above the overlay */
+}
+
+/* Paragraph with Even Brighter White Text */
+.service-box p {
+    font-size: 1.2rem;
+    color: #ffffff; /* Bright white text for paragraph */
+    margin-bottom: 20px;
+    z-index: 1; /* Ensure the paragraph is above the overlay */
+}
+
+/* Button at the Bottom */
+.service-box .service-btn {
+    background-color: #b92e2b; /* Red button color */
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    position: absolute; /* Absolute positioning for the button */
+    bottom: 20px; /* Align it to the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center alignment fix */
+    z-index: 1; /* Place button above the overlay */
+}
+
+.service-box .service-btn:hover {
+    background-color: #9b1e1a; /* Darker red on hover */
+}
+
+/* Background images for each service box */
+.service-box-1 {
+    background-image: url('https://static.vecteezy.com/system/resources/previews/023/574/138/non_2x/human-skeleton-anatomy-on-dark-background-3d-illustration-human-body-ai-generative-image-free-photo.jpg');
+}
+
+.service-box-2 {
+    background-image: url('');
+}
+
+.service-box-3 {
+    background-image: url('https://img.freepik.com/free-vector/human-skull-anatomy-front-view-infographic-with-labelled-parts-dark-blue-background-realistic-vector-illustration_1284-84893.jpg');
+}
+
+.service-box-4 {
+    background-image: url('https://media.istockphoto.com/id/1249219777/photo/shopping-online-concept-parcel-or-paper-cartons-with-a-shopping-cart-logo-in-a-trolley-on-a.jpg?s=612x612&w=0&k=20&c=EWKEahyVLY8iAHyirCCDESHRGW37lqUJ7In0SssNSLE=');
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #777;
+    font-size: 0.9rem;
+}
