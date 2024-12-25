@@ -1,0 +1,55 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black; /* Page background color */
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    width: 100%; /* Full width of the page */
+    max-width: 1200px; /* Max width for the layout */
+    gap: 20px; /* Gap between sections */
+    padding: 20px;
+}
+
+.section {
+    background-color: #808080; /* Grey color for sections */
+    border-radius: 15px; /* Curved border radius */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Box shadow */
+    color: white;
+    padding: 20px;
+    width: 100%;
+    flex: 1; /* Make each section flexible */
+}
+
+.left {
+    flex: 0.3; /* Left section takes up 30% of the width */
+}
+
+.center {
+    flex: 0.4; /* Center section takes up 40% of the width */
+}
+
+.right {
+    flex: 0.3; /* Right section takes up 30% of the width */
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5;
+}
