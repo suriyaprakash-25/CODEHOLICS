@@ -1,3 +1,7 @@
+function redirectToPayment(name, price, image) {
+    const paymentUrl = `payment.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&image=${encodeURIComponent(image)}`;
+    window.location.href = paymentUrl;
+}
 // Updated function to handle showing all categories or specific ones
 function showCategory(category) {
     const allCategories = ['humanOrganModels', 'books', 'charts'];
