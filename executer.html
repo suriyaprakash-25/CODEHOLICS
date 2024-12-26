@@ -84,19 +84,15 @@
             object-fit: cover;
         }
 
-        /* Lock Icon (centered) with glowing effect */
+        /* Lock Icon (centered) with black color */
         .lock-icon {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 80px; /* Increased size */
-            color: #555; /* Base color: grey */
-            background: linear-gradient(45deg, #333, #777); /* Black and grey gradient */
-            -webkit-background-clip: text;
-            background-clip: text;
+            color: #000; /* Pure black color for the lock */
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.7); /* Glowing effect */
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.6); /* Subtle glowing shadow */
             cursor: pointer;
             z-index: 3;
         }
