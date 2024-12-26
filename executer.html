@@ -51,6 +51,8 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-end;  /* Align content at the bottom */
+            border: 5px solid white; /* White border */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
         }
 
         /* Dull Background Overlay */
@@ -140,6 +142,7 @@
         <div class="box subscription-box">
             <!-- Dull Background Overlay -->
             <div class="subscription-overlay">
+                <p>To view the full 3D model, please subscribe to unlock all features.</p>
             </div>
             <!-- Video -->
             <video class="subscription-video" autoplay loop muted>
@@ -149,6 +152,10 @@
             <!-- Lock Icon in the Center -->
             <div class="lock-icon" onclick="window.location.href='https://your-razorpay-payment-link-here.com';">
                 🔒
+            </div>
+            <!-- Text prompting for Subscription -->
+            <div class="subscription-text-top">
+                To view the full 3D model, please subscribe to unlock all features.
             </div>
             <!-- Subscription Text at the Bottom of Box 2 -->
             <div class="subscription-text">
