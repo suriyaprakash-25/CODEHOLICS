@@ -34,9 +34,9 @@ loginForm.addEventListener("submit", (e) => {
         isValid = false;
     }
 
-    const usernameRegex = /^(?=.*[A-Z])(?=.*[_$!]).+$/;
+    const usernameRegex = /^(?=.*[A-Z])(?=.*[_$!])/;
     if (!usernameRegex.test(usernameInput.value)) {
-        showError(usernameInput, "Username must contain at least one uppercase letter and one special character (_, $, or !).");
+        showError(usernameInput, "Username must contain at least one uppercase letter and one special character (_, $..).");
         isValid = false;
     }
 
