@@ -38,15 +38,16 @@
             border-radius: 8px;
         }
 
-        /* Subscription Box: Enlarge it to match the 3D model size */
+        /* Subscription Box: Enlarge it to match the 3D model size with padding */
         .subscription-box {
             width: 100%;
             max-width: 800px;
             height: 500px;
-            position: relative;  /* Positioning for overlay */
+            position: relative;
             background-color: #e0e0e0;
             overflow: hidden;
             border-radius: 8px;
+            padding: 20px; /* Added padding */
             display: flex;
             flex-direction: column;
             justify-content: flex-end;  /* Align content at the bottom */
@@ -96,6 +97,10 @@
             color: white;
             background-color: rgba(0, 0, 0, 0.7); /* Dark background to highlight text */
             text-align: center;
+            position: absolute;
+            bottom: 20px; /* Position at the bottom with some padding */
+            left: 20px;
+            right: 20px;
             z-index: 3;
         }
 
