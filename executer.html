@@ -38,45 +38,67 @@
             border-radius: 8px;
         }
 
-        .preview-text {
-            font-size: 18px;
-            margin-top: 10px;
-            color: #333;
+        /* Subscription Box: Enlarge it to match the 3D model size */
+        .subscription-box {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            position: relative;  /* Positioning for overlay */
+            background-color: #e0e0e0;
+            overflow: hidden;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;  /* Align content at the bottom */
         }
 
-        .lock-box {
+        /* Dull Background Overlay */
+        .subscription-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #e0e0e0;
-            color: #333;
-            font-size: 20px;
-        }
-
-        .lock-icon {
-            font-size: 30px;
-            margin-right: 10px;
-            color: #666;
-        }
-
-        .lock-message {
-            flex: 1;
-        }
-
-        .subscribe-btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #4caf50;
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
+            font-size: 24px;
+            text-align: center;
+            padding: 20px;
+            z-index: 2;
         }
 
-        .subscribe-btn:hover {
-            background-color: #45a049;
+        /* Video Styling */
+        .subscription-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
+
+        /* Lock Icon (centered) */
+        .lock-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: rgba(255, 255, 255, 0.8); /* Grey lock */
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        /* Subscription Text at the Bottom of Box 2 */
+        .subscription-text {
+            padding: 10px 20px;
+            font-size: 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark background to highlight text */
+            text-align: center;
+            z-index: 3;
+        }
+
     </style>
 </head>
 <body>
@@ -93,16 +115,27 @@
                     </iframe>
                 </div>
             </div>
-            <div class="preview-text">
-                This is a 3D viewable model for the human body musculature and organs . For more 3D models, click below to subscribe.
-            </div>
         </div>
 
-        <!-- Box 2: Locked Content (Subscription Required) -->
-        <div class="box lock-box">
-            <div class="lock-icon">🔒</div>
-            <div class="lock-message">Unlock more detailed 3D views and anatomy features.</div>
-            <a href="https://your-razorpay-payment-link-here.com" class="subscribe-btn" target="_blank">Subscribe Now</a>
+        <!-- Box 2: Subscription Box with Video -->
+        <div class="box subscription-box">
+            <!-- Dull Background Overlay -->
+            <div class="subscription-overlay">
+                <p>To view the full 3D model, please subscribe to unlock all features.</p>
+            </div>
+            <!-- Video -->
+            <video class="subscription-video" autoplay loop muted>
+                <source src="your-video-link.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Lock Icon in the Center -->
+            <div class="lock-icon" onclick="window.location.href='https://your-razorpay-payment-link-here.com';">
+                🔒
+            </div>
+            <!-- Subscription Text at the Bottom of Box 2 -->
+            <div class="subscription-text">
+                Unlock more detailed 3D views and anatomy features by subscribing.
+            </div>
         </div>
     </div>
 </body>
