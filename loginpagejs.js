@@ -6,7 +6,6 @@ document.addEventListener("mousemove", (event) => {
     loginBox.style.transform = `perspective(600px) rotateX(${y}deg) rotateY(${x}deg)`; // Applying 3D effect
 });
 
-
 // Validation logic
 const loginForm = document.getElementById("loginForm");
 const emailInput = document.getElementById("email");
@@ -34,14 +33,15 @@ loginForm.addEventListener("submit", (e) => {
         isValid = false;
     }
 
-    const usernameRegex = /^(?=.*[A-Z])(?=.*[_$!])/;
+    const usernameRegex = /^(?=.*[A-Z])/;
     if (!usernameRegex.test(usernameInput.value)) {
-        showError(usernameInput, "Username must contain at least one uppercase letter and one special character (_, $..).");
+        showError(usernameInput, "Username must contain at least one uppercase letter.");
         isValid = false;
     }
 
-    if (passwordInput.value !== "science") {
-        showError(passwordInput, "Password must be 'science'.");
+    // Password validation for at least 8 characters
+    if (passwordInput.value.length < 8) {
+        showError(passwordInput, "Password must be at least 8 characters long.");
         isValid = false;
     }
 
