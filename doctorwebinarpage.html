@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-on-One Webinar with Doctors</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #8ec5fc, #e0c3fc);
+            color: #333;
+        }
+
+        header {
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #3e8e41;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #c8e6c9;
+        }
+
+        .hero {
+            background: url('https://via.placeholder.com/1600x600') no-repeat center center;
+            background-size: cover;
+            text-align: center;
+            padding: 100px 20px;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .doctors-section {
+            padding: 50px 20px;
+            text-align: center;
+            background: #f9f9f9;
+        }
+
+        .doctors-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .doctor-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .doctor-card {
+            background: white;
+            width: 280px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .doctor-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .doctor-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .doctor-card h3 {
+            margin: 15px 0 5px;
+            font-size: 1.2rem;
+            color: #4CAF50;
+        }
+
+        .doctor-card p {
+            margin: 5px 15px;
+            color: #555;
+        }
+
+        .doctor-card .availability {
+            font-size: 0.9rem;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+
+        .doctor-card button {
+            margin: 10px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .doctor-card .free-session {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .doctor-card .free-session:hover {
+            background-color: #388E3C;
+        }
+
+        .doctor-card .paid-session {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .doctor-card .paid-session:hover {
+            background-color: #0056b3;
+        }
+
+        .calendar-section {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .calendar-section input {
+            margin: 5px;
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .confirmation {
+            margin-top: 10px;
+            color: #4CAF50;
+            font-weight: bold;
+            display: none;
+        }
+
+        footer {
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <header>
+        One-on-One Doctor Consultations
+    </header>
+
+    <section class="hero">
+        <h1>Your Health, Our Priority</h1>
+        <p>Book a session today with expert doctors</p>
+    </section>
+
+    <section class="doctors-section" id="doctors">
+        <h2>Our Doctors</h2>
+        <div class="doctor-grid">
+            <!-- Doctor Cards -->
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <h3>Dr. John Doe</h3>
+                <p>Cardiologist - 10+ Years Experience</p>
+                <p class="availability">Available: 10 AM - 2 PM</p>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
+                <div class="calendar-section">
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                    <button onclick="confirmBooking(this)">Confirm Booking</button>
+                </div>
+                <p class="confirmation">Session has been booked. Link will be sent to your email.</p>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <h3>Dr. Alice Smith</h3>
+                <p>Dermatologist - 8+ Years Experience</p>
+                <p class="availability">Available: 12 PM - 4 PM</p>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
+                <div class="calendar-section">
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                    <button onclick="confirmBooking(this)">Confirm Booking</button>
+                </div>
+                <p class="confirmation">Session has been booked. Link will be sent to your email.</p>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <h3>Dr. Emily White</h3>
+                <p>Neurologist - 15+ Years Experience</p>
+                <p class="availability">Available: 9 AM - 1 PM</p>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
+                <div class="calendar-section">
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                    <button onclick="confirmBooking(this)">Confirm Booking</button>
+                </div>
+                <p class="confirmation">Session has been booked. Link will be sent to your email.</p>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <h3>Dr. Robert Brown</h3>
+                <p>Pediatrician - 12+ Years Experience</p>
+                <p class="availability">Available: 11 AM - 3 PM</p>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
+                <div class="calendar-section">
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                    <button onclick="confirmBooking(this)">Confirm Booking</button>
+                </div>
+                <p class="confirmation">Session has been booked. Link will be sent to your email.</p>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <h3>Dr. Sarah Johnson</h3>
+                <p>Psychiatrist - 9+ Years Experience</p>
+                <p class="availability">Available: 2 PM - 6 PM</p>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
+                <div class="calendar-section">
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                    <button onclick="confirmBooking(this)">Confirm Booking</button>
+                </div>
+                <p class="confirmation">Session has been booked. Link will be sent to your email.</p>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <h3>Dr. Michael Green</h3>
+                <p>Orthopedic Surgeon - 14+ Years Experience</p>
+                <p class="availability">Available: 10 AM - 2 PM</p>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
+                <div class="calendar-section">
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                    <button onclick="confirmBooking(this)">Confirm Booking</button>
+                </div>
+                <p class="confirmation">Session has been booked. Link will be sent to your email.</p>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <h3>Dr. Olivia Davis</h3>
+                <p>Oncologist - 16+ Years Experience</p>
+                <p class="availability">Available: 1 PM - 5 PM</p>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
+                <div class="calendar-section">
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                    <button onclick="confirmBooking(this)">Confirm Booking</button>
+                </div>
+                <p class="confirmation">Session has been booked. Link will be sent to your email.</p>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <h3>Dr. James Martinez</h3>
+                <p>Endocrinologist - 13+ Years Experience</p>
+                <p class="availability">Available: 3 PM - 7 PM</p>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
+                <div class="calendar-section">
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                    <button onclick="confirmBooking(this)">Confirm Booking</button>
+                </div>
+                <p class="confirmation">Session has been booked. Link will be sent to your email.</p>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <h3>Dr. Sophia Wilson</h3>
+                <p>Gynecologist - 11+ Years Experience</p>
+                <p class="availability">Available: 9 AM - 12 PM</p>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
+                <div class="calendar-section">
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                    <button onclick="confirmBooking(this)">Confirm Booking</button>
+                </div>
+                <p class="confirmation">Session has been booked. Link will be sent to your email.</p>
+            </div>
+
+            <div class="doctor-card">
+                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <h3>Dr. William Moore</h3>
+                <p>Urologist - 10+ Years Experience</p>
+                <p class="availability">Available: 8 AM - 11 AM</p>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
+                <div class="calendar-section">
+                    <input type="date" id="date">
+                    <input type="time" id="time">
+                    <button onclick="confirmBooking(this)">Confirm Booking</button>
+                </div>
+                <p class="confirmation">Session has been booked. Link will be sent to your email.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2024 One-on-One Doctor Consultations. All rights reserved.
+    </footer>
+
+    <script>
+        function showCalendar(button, type) {
+            const calendarSection = button.nextElementSibling.nextElementSibling;
+            calendarSection.style.display = 'block';
+        }
+
+        function confirmBooking(button) {
+            const confirmation = button.parentElement.nextElementSibling;
+            confirmation.style.display = 'block';
+            button.parentElement.style.display = 'none';
+        }
+
+        function bookPaidSession() {
+            const options = {
+                key: "rzp_test_lhxBWfwsy1FWVq",
+                amount: 50000, // Amount in paise (500 INR)
+                currency: "INR",
+                name: "Doctor Consultation",
+                description: "1 Hour Session",
+                handler: function (response) {
+                    alert("Payment successful! Your session has been booked.");
+                },
+                prefill: {
+                    name: "",
+                    email: "",
+                    contact: "",
+                },
+                theme: {
+                    color: "#007BFF",
+                },
+            };
+            const rzp = new Razorpay(options);
+            rzp.open();
+        }
+    </script>
+</body>
+</html>
