@@ -181,6 +181,7 @@
         }
     </style>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
 </head>
 <body>
     <header>
@@ -354,7 +355,13 @@
     </footer>
 
     <script>
+        let freeSessionBooked = false; // Keeps track if a free session is already booked
+
         function showCalendar(button, type) {
+            if (type === 'free' && freeSessionBooked) {
+                alert('You have already booked a free one-on-one webinar session.');
+                return;
+            }   
             const calendarSection = button.nextElementSibling.nextElementSibling;
             calendarSection.style.display = 'block';
         }
@@ -363,6 +370,10 @@
             const confirmation = button.parentElement.nextElementSibling;
             confirmation.style.display = 'block';
             button.parentElement.style.display = 'none';
+             // Mark free session as booked
+             if (!freeSessionBooked) {
+                freeSessionBooked = true;
+            }
         }
 
         function bookPaidSession() {
