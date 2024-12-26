@@ -14,7 +14,7 @@
         }
 
         header {
-            background: #4CAF50;
+            background: linear-gradient(135deg, #248ef8, #9e48ee);;
             color: white;
             text-align: center;
             padding: 20px 0;
@@ -45,7 +45,7 @@
         }
 
         .hero {
-            background: url('https://via.placeholder.com/1600x600') no-repeat center center;
+            background: url('navbarimg.jpg') no-repeat center center;
             background-size: cover;
             text-align: center;
             padding: 100px 20px;
@@ -72,7 +72,7 @@
         .doctors-section {
             padding: 50px 20px;
             text-align: center;
-            background: #f9f9f9;
+            background: linear-gradient(135deg, #8ec5fc, #e0c3fc);
         }
 
         .doctors-section h2 {
@@ -84,14 +84,14 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
         }
 
         .doctor-card {
             background: white;
             width: 280px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
         }
@@ -103,8 +103,8 @@
 
         .doctor-card img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: 270px;
+            object-fit: fill;
         }
 
         .doctor-card h3 {
@@ -181,10 +181,11 @@
         }
     </style>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    
 </head>
 <body>
     <header>
-        One-on-One Doctor Consultations
+        ONE-ON-ONE DOCTOR CONSULTATIONS
     </header>
 
     <section class="hero">
@@ -197,11 +198,11 @@
         <div class="doctor-grid">
             <!-- Doctor Cards -->
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <img src="docor1.jpg" alt="Doctor">
                 <h3>Dr. John Doe</h3>
                 <p>Cardiologist - 10+ Years Experience</p>
                 <p class="availability">Available: 10 AM - 2 PM</p>
-                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free 10 min Session</button>
                 <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
                 <div class="calendar-section">
                     <input type="date" id="date">
@@ -212,11 +213,11 @@
             </div>
 
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <img src="doctor2.jpg" alt="Doctor">
                 <h3>Dr. Alice Smith</h3>
                 <p>Dermatologist - 8+ Years Experience</p>
                 <p class="availability">Available: 12 PM - 4 PM</p>
-                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free 10 min  Session</button>
                 <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
                 <div class="calendar-section">
                     <input type="date" id="date">
@@ -227,11 +228,11 @@
             </div>
 
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <img src="doctorlady1.png" alt="Doctor">
                 <h3>Dr. Emily White</h3>
                 <p>Neurologist - 15+ Years Experience</p>
                 <p class="availability">Available: 9 AM - 1 PM</p>
-                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free 10 min Session</button>
                 <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
                 <div class="calendar-section">
                     <input type="date" id="date">
@@ -242,11 +243,11 @@
             </div>
 
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <img src="doctor3.jpg" alt="Doctor">
                 <h3>Dr. Robert Brown</h3>
                 <p>Pediatrician - 12+ Years Experience</p>
                 <p class="availability">Available: 11 AM - 3 PM</p>
-                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free 10 min Session</button>
                 <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
                 <div class="calendar-section">
                     <input type="date" id="date">
@@ -257,11 +258,11 @@
             </div>
 
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <img src="doctorlady2.png" alt="Doctor">
                 <h3>Dr. Sarah Johnson</h3>
                 <p>Psychiatrist - 9+ Years Experience</p>
                 <p class="availability">Available: 2 PM - 6 PM</p>
-                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free 10 min Session</button>
                 <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
                 <div class="calendar-section">
                     <input type="date" id="date">
@@ -272,11 +273,11 @@
             </div>
 
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <img src="doctor5.jpg" alt="Doctor">
                 <h3>Dr. Michael Green</h3>
                 <p>Orthopedic Surgeon - 14+ Years Experience</p>
                 <p class="availability">Available: 10 AM - 2 PM</p>
-                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free 10 min Session</button>
                 <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
                 <div class="calendar-section">
                     <input type="date" id="date">
@@ -287,11 +288,11 @@
             </div>
 
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <img src="doctorlady3.avif" alt="Doctor">
                 <h3>Dr. Olivia Davis</h3>
                 <p>Oncologist - 16+ Years Experience</p>
                 <p class="availability">Available: 1 PM - 5 PM</p>
-                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free 10 min Session</button>
                 <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
                 <div class="calendar-section">
                     <input type="date" id="date">
@@ -302,11 +303,11 @@
             </div>
 
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <img src="doctor6.png" alt="Doctor">
                 <h3>Dr. James Martinez</h3>
                 <p>Endocrinologist - 13+ Years Experience</p>
                 <p class="availability">Available: 3 PM - 7 PM</p>
-                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free 10 min Session</button>
                 <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
                 <div class="calendar-section">
                     <input type="date" id="date">
@@ -317,11 +318,11 @@
             </div>
 
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <img src="doc.jpg" alt="Doctor">
                 <h3>Dr. Sophia Wilson</h3>
-                <p>Gynecologist - 11+ Years Experience</p>
+                <p>Gynecologist - 5+ Years Experience</p>
                 <p class="availability">Available: 9 AM - 12 PM</p>
-                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free 10 min Session</button>
                 <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
                 <div class="calendar-section">
                     <input type="date" id="date">
@@ -332,11 +333,11 @@
             </div>
 
             <div class="doctor-card">
-                <img src="https://via.placeholder.com/300x200" alt="Doctor">
+                <img src="doctor4.jpg" alt="Doctor">
                 <h3>Dr. William Moore</h3>
                 <p>Urologist - 10+ Years Experience</p>
                 <p class="availability">Available: 8 AM - 11 AM</p>
-                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free Session</button>
+                <button class="free-session" onclick="showCalendar(this, 'free')">Book Free 10 min Session</button>
                 <button class="paid-session" onclick="bookPaidSession()">Book 1 Hour Session</button>
                 <div class="calendar-section">
                     <input type="date" id="date">
@@ -354,7 +355,13 @@
     </footer>
 
     <script>
+        let freeSessionBooked = false; // Keeps track if a free session is already booked
+
         function showCalendar(button, type) {
+            if (type === 'free' && freeSessionBooked) {
+                alert('You have already booked a free one-on-one webinar session.');
+                return;
+            }   
             const calendarSection = button.nextElementSibling.nextElementSibling;
             calendarSection.style.display = 'block';
         }
@@ -363,6 +370,10 @@
             const confirmation = button.parentElement.nextElementSibling;
             confirmation.style.display = 'block';
             button.parentElement.style.display = 'none';
+             // Mark free session as booked
+             if (!freeSessionBooked) {
+                freeSessionBooked = true;
+            }
         }
 
         function bookPaidSession() {
