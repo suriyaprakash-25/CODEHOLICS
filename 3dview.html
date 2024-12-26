@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Model View</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* General reset */
         body, html {
@@ -139,6 +141,32 @@
         }
 
     </style>
+    <script>
+        function initiatePayment() {
+            const options = {
+                key: "rzp_test_lhxBWfwsy1FWVq", // Replace with your Razorpay API Key
+                amount: 99900, // Example amount in paise (₹500)
+                currency: "INR",
+                name: "Premium Feature Subscription",
+                description: "Access for 3D view of Anatomical structures and dissections of various parts",
+                handler: function (response) {
+                    alert(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+                    // Redirect to the session booking confirmation
+                },
+                prefill: {
+                    name: "",
+                    email: "user@example.com",
+                    contact: "9999999999"
+                },
+                theme: {
+                    color: "#5e60ce"
+                }
+            };
+
+            const paymentObject = new Razorpay(options);
+            paymentObject.open();
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -171,7 +199,7 @@
                 Your browser does not support the video tag.
             </video>
             <!-- Lock Icon in the Center -->
-            <div class="lock-icon" onclick="window.location.href='https://your-razorpay-payment-link-here.com';">
+            <div class="lock-icon" onclick=initiatePayment()>
                 🔒
             </div>
             <!-- Text prompting for Subscription -->
