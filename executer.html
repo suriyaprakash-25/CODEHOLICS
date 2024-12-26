@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Model Viewer with Subscription</title>
+    <title>3D Model View</title>
     <style>
         /* General reset */
         body, html {
@@ -34,12 +34,27 @@
             text-align: center;
             /* Box shadow for depth */
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            position: relative; /* Necessary for absolute positioning of the text */
         }
 
         .box iframe {
             width: 100%;
             height: 500px;
             border-radius: 8px;
+        }
+
+        /* Adding Text Above the 3D Model Box */
+        .top-text {
+            position: absolute;
+            top: 20px; /* Adjust the distance from the top */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+            z-index: 3; /* Ensure text is above the 3D model */
+            text-align: center;
         }
 
         /* Subscription Box: Enlarge it to match the 3D model size with padding */
@@ -129,6 +144,10 @@
     <div class="container">
         <!-- Box 1: 3D Model Viewer -->
         <div class="box">
+            <!-- Text on Top of the 3D Model -->
+            <div class="top-text">
+                Explore the Human Anatomy in 3D
+            </div>
             <div class="viewer-wrapper">
                 <div class="c-viewer viewer-container">
                     <iframe title="Head Anatomy &amp; Musculature 3D model - Sketchfab" class="c-viewer__iframe"
