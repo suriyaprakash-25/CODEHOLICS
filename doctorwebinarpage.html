@@ -378,13 +378,21 @@
 
         function bookPaidSession() {
             const options = {
-                key: "rzp_test_lhxBWfwsy1FWVq",
+                key: "rzp_test_lhxBWfwsy1FWVq", // Your Razorpay test API key
                 amount: 50000, // Amount in paise (500 INR)
                 currency: "INR",
                 name: "Doctor Consultation",
                 description: "1 Hour Session",
                 handler: function (response) {
-                    alert("Payment successful! Your session has been booked.");
+                    // Log the response to ensure you are receiving it correctly
+                    console.log(response);
+
+                    // Check if the payment was successful using response.razorpay_payment_id
+                    if (response.razorpay_payment_id) {
+                        alert("Payment successful! Your session has been booked.");
+                    } else {
+                        alert("Payment failed! Please try again.");
+                    }
                 },
                 prefill: {
                     name: "",
@@ -395,7 +403,11 @@
                     color: "#007BFF",
                 },
             };
+
+            // Initialize Razorpay with options and open the payment gateway
             const rzp = new Razorpay(options);
+
+            // Open the payment modal
             rzp.open();
         }
     </script>
